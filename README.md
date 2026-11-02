@@ -45,13 +45,14 @@ is confirmed.
 | `vroxy-tools` | custom bot tools |
 | `vroxy-support` | support chats, visitors, client errors |
 | `vroxy-dispatch` | agent targets, plan usage, dispatch status |
+| `vroxy-admin` | create/rename workspaces, create rooms, invite / role / remove members (mobile token) |
 
 ## The walls
 
-The CLI mints an **agent-scoped** token, and the mobile API's agent
-allow-list is deliberately narrow. A plain `403` means the seat lacks
-the capability; `agent_token_refused` means the call is closed to agents
-by design — inviting, promoting or removing members, creating
+The CLI mints an **agent-scoped** token by default, and the mobile API's
+agent allow-list is deliberately narrow. A plain `403` means the seat
+lacks the capability; `agent_token_refused` means the call is closed to
+agents by design — inviting, promoting or removing members, creating
 workspaces, accepting invitations, answering room questions, and
 dispatch queue control. Those are app actions: the skill says to hand
 the person back to the app rather than routing around it. An agent
@@ -59,6 +60,9 @@ reading a visitor transcript inviting itself as admin is exactly the
 prompt-injection path that wall exists to block, so it is not something
 the skills are meant to climb over.
 
-Workspace setup on someone's behalf rides a separately-minted
-`mobile`-scoped token, never the agent token — that surface is not part
-of this pack yet.
+Workspace setup and member management (`vroxy-admin`) ride a
+**separately-minted `mobile` token** — `vroxy login --mobile`, typed by
+a person with their password. The agent never mints it and never holds
+the password; it only consumes a token the person already stored.
+Creating a dispatch agent has no mobile endpoint at all and stays an
+app action.
