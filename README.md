@@ -61,8 +61,8 @@ prompt-injection path that wall exists to block, so it is not something
 the skills are meant to climb over.
 
 Workspace setup and member management (`vroxy-admin`) ride a
-**separately-minted `mobile` token** — `vroxy login --mobile`, typed by
-a person with their password. The agent never mints it and never holds
-the password; it only consumes a token the person already stored.
+**separately-minted `mobile` token** — `vroxy login --mobile`, which
+prints a browser link the person signs into and approves. The agent
+never mints it; it only consumes a token the person already stored.
 Creating a dispatch agent has no mobile endpoint at all and stays an
 app action.

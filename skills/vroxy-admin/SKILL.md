@@ -13,9 +13,10 @@ surface is minted by a person and only consumed here.
 ## The one rule
 
 These commands fail with `Not signed in. Run: vroxy login --mobile`
-until a person has run `vroxy login --mobile` and typed their password.
-An agent never runs that command and never holds the password — if the
-mobile token isn't already stored, stop and tell the person to sign in.
+until a person has run `vroxy login --mobile`, which prints a browser
+link — the person signs in there, approves, and pastes the code back.
+An agent never runs that command — if the mobile token isn't already
+stored, stop and tell the person to sign in.
 Do not fall back to `VROXY_TOKEN`: that is the agent token and the write
 will 403 with `agent_token_refused`.
 
