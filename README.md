@@ -13,7 +13,7 @@ use without shelling into production.
 ## Install
 
 ```bash
-git clone git@github.com:wartron/vroxy_skills.git
+git clone https://github.com/VroxyAI/vroxy_skills.git
 cd vroxy_skills
 python3 install_skills.py --dry-run   # see what would change
 python3 install_skills.py             # install
